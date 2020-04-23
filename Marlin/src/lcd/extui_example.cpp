@@ -23,7 +23,7 @@
 
 #if BOTH(EXTUI_EXAMPLE, EXTENSIBLE_UI)
 
-#include "extensible_ui/ui_api.h"
+#include "extui/ui_api.h"
 
 // To implement a new UI, complete the functions below and
 // read or update Marlin's state using the methods in the
@@ -92,6 +92,18 @@ namespace ExtUI {
   void onMeshUpdate(const int8_t xpos, const int8_t ypos, const float zval) {
     // Called when any mesh points are updated
   }
+
+  #if ENABLED(POWER_LOSS_RECOVERY)
+    void onPowerLossResume() {
+      // Called on resume from power-loss
+    }
+  #endif
+
+  #if HAS_PID_HEATING
+    void onPidTuning(const result_t rst) {
+      // Called for temperature PID tuning result
+    }
+  #endif
 }
 
 #endif // EXTUI_EXAMPLE && EXTENSIBLE_UI
